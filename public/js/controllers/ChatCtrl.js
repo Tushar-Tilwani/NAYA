@@ -6,14 +6,14 @@ angular.module('ChatCtrl', []).controller('ChatController', function($scope) {
     // on connection to server, ask for user's name with an anonymous callback
     socket.on('connect', function(){
         // call the server-side function 'adduser' and send one parameter (value of prompt)
-        socket.emit('adduser', prompt("What's your name?"));
+        socket.emit('adduser', sessionStorage.username);
     });
 
     // listener, whenever the server emits 'updatechat', this updates the chat body
     socket.on('updatechat', function (username, data) {
         $('#ul-chat-messages').append('<li class="list-group-item"><b>'+username + ':</b> ' + data + '</li>');
         var objDiv = document.getElementById("ul-chat-messages");
-objDiv.scrollTop = objDiv.scrollHeight;
+        objDiv.scrollTop = objDiv.scrollHeight;
     });
 
     // when the client clicks SEND

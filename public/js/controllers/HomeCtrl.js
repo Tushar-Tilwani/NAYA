@@ -1,5 +1,5 @@
-angular.module('HomeCtrl', []).controller('HomeController', function($scope) {
+angular.module('HomeCtrl', []).controller('HomeController', function($scope,UserFactory) {
 
-	$scope.tagline = 'To the moon and back!';	
+	//$scope.user = UserFactory.getLoggedInUser();	
 
 });

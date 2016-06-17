@@ -3,23 +3,23 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',fu
 	$routeProvider
 
 		// home page
-		.when('/', {
-			templateUrl: 'views/home.html',
+		.when('/index', {
+			templateUrl: 'public/views/home.html',
 			controller: 'HomeController'
 		})
 
 		.when('/home', {
-			templateUrl: 'views/home.html',
+			templateUrl: 'public/views/home.html',
 			controller: 'HomeController'
 		})
 
-		.when('/forms', {
-			templateUrl: 'views/forms.html',
-			controller: 'FormController'
+		.when('/projects', {
+			templateUrl: 'public/views/projects.html',
+			controller: 'ProjectController'
 		})
 
 		.when('/chat', {
-			templateUrl: 'views/chat.html',
+			templateUrl: 'public/views/chat.html',
 			controller: 'ChatController'
 		});
 
