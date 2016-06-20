@@ -1,7 +1,7 @@
 
 /*--- Chat.css ----*/
 .ChatController #page-wrapper{
-    
+
 }
 #chat-container {
     position: relative;
@@ -10,7 +10,7 @@
     
 }
 #chat-messages {
-     height: calc(100% - 50px);
+   height: calc(100% - 50px);
 }
 #ul-chat-messages {
     bottom: 0;
@@ -36,13 +36,16 @@
   border-radius: 2px;
   background-clip: padding-box;
 }
-.card span.card-title {
+.card .card-title {
     font-size: 24px;
     font-weight: 300;
     text-transform: uppercase;
     background-color: rgba(255,255,255,0.9);
     color: #000;
     text-shadow: rgba(155,155,155,0.9) 2px 2px 6px;
+}
+.card h4.card-title {
+  padding-left: 10px;
 }
 
 .card .card-image {
@@ -92,3 +95,51 @@
     padding: 5px;
     padding-left: 0;
 }
+
+/* for glyphicon */
+.size-big {
+    font-size: 5em;
+}
+
+/*modal */
+
+.date-picker .full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+}
+.date-picker .partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+}
+
+.typeahead-demo .custom-popup-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: #f9f9f9;
+  }
+
+  .typeahead-demo .custom-popup-wrapper > .message {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    color: #868686;
+  }
+
+  .typeahead-demo .custom-popup-wrapper > .dropdown-menu {
+    position: static;
+    float: none;
+    display: block;
+    min-width: 160px;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .full-width {
+    width: 100%;
+  }
+

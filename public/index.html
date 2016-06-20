@@ -37,10 +37,12 @@
     <!-- ANGULAR CUSTOM -->
     <script src="public/js/services/UserService.js"></script>
     <script src="public/js/services/ProjectService.js"></script>
+    <script src="public/js/services/TaskService.js"></script>
 
     <script src="public/js/controllers/ProjectCtrl.js"></script>
     <script src="public/js/controllers/ChatCtrl.js"></script>
     <script src="public/js/controllers/HomeCtrl.js"></script>
+     <script src="public/js/controllers/TaskCtrl.js"></script>
 
    
     <script src="public/js/appRoutes.js"></script>
@@ -181,27 +183,16 @@
                             <a href="/home"><i class="fa fa-fw fa-dashboard"></i>Dashboard</a>
                         </li>
                         <li>
-                            <a href="/projects"><i class="fa fa-fw fa-bar-chart-o"></i> Projects</a>
+                            <a href="/projects"><i class="fa fa-fw fa-bar-chart-o"></i>Projects</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-table"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="/forms"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="demo" class="collapse">
-                                <li>
-                                    <a href="#">Dropdown Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Dropdown Item</a>
-                                </li>
-                            </ul>
+                            <a href="/mytasks/{{user._id}}"><i class="fa fa-fw fa-table"></i>Tasks</a>
                         </li>
                         <li>
                             <a href="/chat"><i class="fa fa-fw fa-wechat"></i>Chat</a>
+                        </li>
+                        <li>
+                            <a href="/aboutus"><i class="fa fa-fw fa-edit"></i> About Us</a>
                         </li>
                     </ul>
                 </div>

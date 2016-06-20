@@ -1,0 +1,64 @@
+<div class="modal-header">
+  <h3 class="modal-title">{{modal_title}}</h3>
+</div>
+<div class="modal-body">
+
+ <div class="row">  
+  <div class="col-md-6">
+   <label for="name">Name</label>
+   <input type="text" class="form-control" ng-model="data.name" id="name" />
+ </div>
+
+ <div class="col-md-6">
+         <!-- <label for="name">Manager</label>
+        <p class="input-group">
+          <input type="text" class="form-control" ng-model="manager" id="manager" />
+        </p> -->
+
+        <label for="name">Manager</label>
+        <pre>Model: {{data.owner | json}}</pre>
+        <input type="text" ng-model="data.owner" placeholder="Locations loaded via $http" uib-typeahead="state as state.fullName for state in getUsers($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+        <div ng-show="noResults">
+          <i class="glyphicon glyphicon-remove"></i> No Results Found
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="row date-picker">  
+      <div class="col-md-6">
+       <label for="sdate">Start Date</label>
+       <p class="input-group">
+        <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="data.dt1" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+      </p>
+    </div>
+
+    <div class="col-md-6">
+     <label for="sdate">End Date</label>
+     <p class="input-group">
+      <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="data.dt2" is-open="popup2.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+      </span>
+    </p>
+  </div>
+</div>
+
+<div class="row">  
+  <div class="col-md-6">
+   <label for="name">Description</label>
+   <textarea ng-model="data.description" class="form-control full-width"></textarea>
+ </div>
+</div>
+
+
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+  <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

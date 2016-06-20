@@ -21,6 +21,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',fu
 		.when('/chat', {
 			templateUrl: 'public/views/chat.html',
 			controller: 'ChatController'
+		})
+
+		.when('/tasks/:projectId', {
+			templateUrl: 'public/views/tasks.html',
+			controller: 'TaskController'
 		});
 
 	$locationProvider.html5Mode(true);

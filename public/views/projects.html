@@ -7,18 +7,15 @@
 					<img class="img-responsive" src="http://material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7TDlCYzRROE84YWM/materialdesign_introduction.png">
 					<span class="card-title">{{project.name}}</span>
 				</div>
-				
+
 				<div class="card-content">
-					<p>Cards for display in portfolio style material design by Google.Cards for display in portfolio style material design by Google.Cards for display in portfolio style material design by Google.Cards for display in portfolio style material design by Google.Cards for display in portfolio style material design by Google.Cards for display in portfolio style material design by Google.Cards for display in portfolio style material design by Google.Cards for display in portfolio style material design by Google.Cards for display in portfolio style material design by Google.</p>
-					<p><span class="inline-content"><label>Manager:</label> Add ddd</span></p>
-					<p><span class="inline-content"><label>Start Date: </label>{{project.s_date}}</span><span class="inline-content"><label>End Date: </label>16 July 2016</span></p>
-
-
+					<p>{{project.description}}</p>
+					<p><span class="inline-content"><label>Manager:</label>{{user.last_name}}, {{user.first_name}}</span></p>
+					<p><span class="inline-content"><label>Start Date: </label>{{project.start_date}}</span><span class="inline-content"><label>End Date: </label>{{project.end_date}}</span></p>
 				</div>
-				
+
 				<div class="card-action">
-					<a href="#" target="new_blank"> Tasks >> </a>
-					
+					<a href="/tasks/{{project._id}}"> Tasks >> </a>
 				</div>
 			</div>
 		</div>

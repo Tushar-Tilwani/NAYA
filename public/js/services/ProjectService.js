@@ -1,11 +1,11 @@
-angular.module('ProjectService', []).factory('ProjectFactory', ['$http', '$q','$rootScope',function($http, $q, $rootScope) {
+angular.module('ProjectService', []).factory('ProjectFactory', ['$http', '$q','$rootScope','CONSTANTS',function($http, $q, $rootScope, CONSTANTS) {
 	var projects = null;
 	var user = $rootScope.user;
 
 	var getProjectsFromServer = function() {
 		return $http({
 			method: "GET",
-			url: "http://localhost:3001/projects/user/" + user._id
+			url: CONSTANTS.getDomain(["projects","user",user._id])
 		}).then(function mySucces(response) {
 			return response.data;
 		}, function myError(response) {
@@ -15,11 +15,11 @@ angular.module('ProjectService', []).factory('ProjectFactory', ['$http', '$q','$
 
 	return {
 		getProjects: function() {
-			/*if(projects) {
+			if(projects) {
 				var deferred = $q.defer();
 				deferred.resolve(projects);
 				return deferred.promise;
-			} */
+			}
 			return getProjectsFromServer().then(function(projectsData) {
 				projects = projectsData;
 				return projects;
