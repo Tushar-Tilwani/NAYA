@@ -8,6 +8,9 @@ angular.module('TaskCtrl', []).controller('TaskController', function($scope, $ro
 
   TaskFactory.getTasksByProjectId($routeParams.projectId).then(function(tasks){
       $scope.tasks = tasks || [];
+      if(!$scope.tasks.length){
+         $scope.isEmptyMsg = "Currently no tasks assigned!";
+      }
     });
 
   $scope.open = function (size) {
@@ -47,5 +50,13 @@ angular.module('TaskCtrl', []).controller('TaskController', function($scope, $ro
 .controller('MyTaskController', function($scope,$rootScope,TaskFactory) {
   TaskFactory.getTasksByEmployeeId($rootScope.user._id).then(function(tasks){
       $scope.tasks = tasks || [];
+      if(!$scope.tasks.length){
+         $scope.isEmptyMsg = "Currently no tasks assigned!";
+      }
     });
+  $scope.toggleDone = function(id,status){
+    TaskFactory.setTaskStatus(id,status).then(function(status){
+      $scope.isDone = status === "true";
+    });
+  }
 });

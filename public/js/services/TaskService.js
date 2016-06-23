@@ -52,6 +52,17 @@ angular.module('TaskService', []).factory('TaskFactory', ['$http', '$q','CONSTAN
 			}, function myError(response) {
 				return null;
 			});
+		},
+		setTaskStatus:function(taskId,status){
+			//http://localhost:3001/task/576b1d758862411e3b2751e5/status/true
+			return $http({
+				method: "GET",
+				url: CONSTANTS.getDomain(["task",taskId,"status",status])
+			}).then(function mySucces(response) {
+				return response.data;
+			}, function myError(response) {
+				return null;
+			});
 		}
 	};
 

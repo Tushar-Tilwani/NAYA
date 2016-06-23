@@ -1,4 +1,4 @@
-    var app = angular.module('NAYA', ['ui.bootstrap', 'ngRoute', 'appRoutes', 'HomeCtrl', 'ChatCtrl','ProjectCtrl','TaskCtrl','AddModalCtrl','UserService','ProjectService','TaskService']);
+    var app = angular.module('NAYA', ['ui.bootstrap', 'ngRoute', 'appRoutes', 'HomeCtrl', 'ChatCtrl','ProjectCtrl','TaskCtrl','AddModalCtrl','UserService','ProjectService','TaskService','ChatService']);
 
     app.constant("CONSTANTS", {
       "host": "http://localhost",
@@ -19,6 +19,7 @@
     }
   });
 
+
     app.config(function($httpProvider) {
       $httpProvider.defaults.useXDomain = true;
       delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -28,10 +29,13 @@
       $httpProvider.defaults.headers.patch = {};
     });
 
-    app.run(function($rootScope,$http,CONSTANTS,UserFactory) {
+    app.run(function($rootScope,$http,$location,CONSTANTS,UserFactory) {
 
      $rootScope.token = window.sessionStorage.token;
      $rootScope.epochToDate = CONSTANTS.epochToDate;
+     $rootScope.isActive = function(path){
+      return $location.path().indexOf(path) >= 0;
+     }
 
      var invalidatePage = function() {
       delete window.sessionStorage.token;

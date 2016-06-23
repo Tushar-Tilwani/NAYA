@@ -1,18 +1,15 @@
-
-
 <div class="container-fluid" id="chat-container" >
     <div class="row" id="chat-messages">
         <ul id="ul-chat-messages" class="list-group">
-            <li class="list-group-item">life is awesome! </li>
-            <li class="list-group-item">life is super awesome! </li>
+            <li class="list-group-item" ng-repeat = "chat in chats track by $index"><b>{{chat.username}}</b> : {{chat.msg}} </li>
         </ul>
     </div>
     <div class="row" id="form-input">
      <form role="form">
       <div class="input-group">
-        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here...">
+        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." ng-model="message">
         <span class="input-group-btn">
-            <button class="btn btn-warning btn-sm" id="btn-chat">
+            <button class="btn btn-warning btn-sm" id="btn-chat" ng-click = "sendChat()">
                 Send</button>
             </span>
         </div>

@@ -142,4 +142,6 @@
   .full-width {
     width: 100%;
   }
-
+.MyTaskController .addTask {
+  display: none;
+}

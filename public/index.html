@@ -38,6 +38,7 @@
     <script src="public/js/services/UserService.js"></script>
     <script src="public/js/services/ProjectService.js"></script>
     <script src="public/js/services/TaskService.js"></script>
+    <script src="public/js/services/ChatService.js"></script>
 
     <script src="public/js/controllers/ProjectCtrl.js"></script>
     <script src="public/js/controllers/ChatCtrl.js"></script>
@@ -180,21 +181,21 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li class="active">
+                        <li ng-class="{ active: isActive('/home')}">
                             <a href="/home"><i class="fa fa-fw fa-dashboard"></i>Dashboard</a>
                         </li>
-                        <li>
+                        <li ng-class="{ active: isActive('/projects')}">
                             <a href="/projects"><i class="fa fa-fw fa-bar-chart-o"></i>Projects</a>
                         </li>
-                        <li>
+                        <li ng-class="{ active: isActive('/mytasks')}">
                             <a href="/mytasks/"><i class="fa fa-fw fa-table"></i>Tasks</a>
                         </li>
-                        <li>
+                        <li ng-class="{ active: (isActive('/chats') || isActive('/chat')) }">
                             <a href="/chats"><i class="fa fa-fw fa-wechat"></i>Chats</a>
                         </li>
-                        <li>
+                        <!-- <li ng-class="{ active: isActive('/aboutus')}">
                             <a href="/aboutus"><i class="fa fa-fw fa-edit"></i> About Us</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
