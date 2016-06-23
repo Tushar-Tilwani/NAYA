@@ -1,4 +1,4 @@
-angular.module('TaskCtrl', []).controller('TaskController', function($scope, $routeParams,$uibModal,TaskFactory, $log) {
+angular.module('TaskCtrl', []).controller('TaskController', function($scope, $routeParams,$uibModal,$rootScope,TaskFactory, $log) {
 	//console.log($routeParams.projectId)
 
 /* Modal Work */
@@ -41,11 +41,15 @@ angular.module('TaskCtrl', []).controller('TaskController', function($scope, $ro
 
   /* Modal Work */
 
-  $scope.toggleDone = function(id){
-    console.log(id);
-    $scope.isDone = !$scope.isDone;
-  }
-
+ $scope.toggleDone = function(id,status){
+    TaskFactory.setTaskStatus(id,status).then(function(status){
+      var index = $rootScope.findById($scope.tasks,id);
+      if(index>=0){
+         $scope.tasks[index].isDone = status === "true";
+      }
+      //$scope.$apply();
+    });
+};
 })
 .controller('MyTaskController', function($scope,$rootScope,TaskFactory) {
   TaskFactory.getTasksByEmployeeId($rootScope.user._id).then(function(tasks){
@@ -56,7 +60,11 @@ angular.module('TaskCtrl', []).controller('TaskController', function($scope, $ro
     });
   $scope.toggleDone = function(id,status){
     TaskFactory.setTaskStatus(id,status).then(function(status){
-      $scope.isDone = status === "true";
+      var index = $rootScope.findById($scope.tasks,id);
+      if(index>=0){
+         $scope.tasks[index].isDone = status === "true";
+      }
+      //$scope.$apply();
     });
   }
 });

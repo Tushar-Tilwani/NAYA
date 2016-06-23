@@ -16,6 +16,14 @@
       var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
       d.setUTCSeconds(parseInt(utcSeconds));
       return d.toDateString();
+    },
+    findById:function(arr,id){
+      for (var i = 0; i < arr.length; i++) {
+        if(arr[i]._id == id){
+          return i;
+        }
+      }
+      return -1;
     }
   });
 
@@ -33,6 +41,7 @@
 
      $rootScope.token = window.sessionStorage.token;
      $rootScope.epochToDate = CONSTANTS.epochToDate;
+      $rootScope.findById = CONSTANTS.findById;
      $rootScope.isActive = function(path){
       return $location.path().indexOf(path) >= 0;
      }
