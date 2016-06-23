@@ -1,10 +1,10 @@
 angular.module('TaskService', []).factory('TaskFactory', ['$http', '$q','CONSTANTS', function($http, $q, CONSTANTS) {
 	var tasks = {};
 
-	var getTaskByManagerProject = function(projectId) {
+	var getTaskByProject = function(projectId) {
 		return $http({
 			method: "GET",
-			url: "http://localhost:3001/projects/" + projectId
+			url: CONSTANTS.getDomain(["tasks","project","id",projectId])
 		}).then(function mySucces(response) {
 			return response.data;
 		}, function myError(response) {
@@ -19,23 +19,13 @@ angular.module('TaskService', []).factory('TaskFactory', ['$http', '$q','CONSTAN
 				deferred.resolve(tasks[projectId]);
 				return deferred.promise;
 			}
-			return getTaskByManagerProject(projectId).then(function(project) {
-				tasks[projectId] = project.tasks;
+			return getTaskByProject(projectId).then(function(tasks) {
+				tasks[projectId] = tasks;
 				return tasks[projectId];
 			});
 
 		},
 		addTask: function(projectId, obj) {
-			/* 
-			$http.post(CONSTANTS.getDomain(["projects",projectId,"addTask"]), obj);
-			$http({
-				method: "POST",
-				url: CONSTANTS.getDomain(["projects",projectId,"addTask"]),
-				data: JSON.stringify(obj),
-				headers: {'Content-Type': 'application/json'}
-			});
-			console.log(obj);
-			*/
 
 			return $http({
 				method: "POST",

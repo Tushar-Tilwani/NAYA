@@ -18,6 +18,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',fu
 			controller: 'ProjectController'
 		})
 
+		.when('/chats', {
+			templateUrl: 'public/views/project-chats.html',
+			controller: 'ProjectController'
+		})
+
 		.when('/chat', {
 			templateUrl: 'public/views/chat.html',
 			controller: 'ChatController'

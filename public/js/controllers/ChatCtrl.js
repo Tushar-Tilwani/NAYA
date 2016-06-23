@@ -1,12 +1,12 @@
-angular.module('ChatCtrl', []).controller('ChatController', function($scope) {
+angular.module('ChatCtrl', []).controller('ChatController', function($scope,$rootScope,$routeParams) {
 
-	$scope.tagline = 'The square root of life is pi!';
+    var projectId = $routeParams.projectId;
 
 	var socket = io();
     // on connection to server, ask for user's name with an anonymous callback
     socket.on('connect', function(){
         // call the server-side function 'adduser' and send one parameter (value of prompt)
-        socket.emit('adduser', sessionStorage.username);
+        socket.emit('adduser', {username:$rootScope.user.username,room:projectId});
     });
 
     // listener, whenever the server emits 'updatechat', this updates the chat body

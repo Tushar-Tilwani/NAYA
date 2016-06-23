@@ -1,30 +1,21 @@
 angular.module('ProjectService', []).factory('ProjectFactory', ['$http', '$q','$rootScope','CONSTANTS',function($http, $q, $rootScope, CONSTANTS) {
-	var projects = null;
-	var user = $rootScope.user;
+	var projects = {};
+	var token = $rootScope.token;
 
-	var getProjectsFromServer = function() {
+	var getProjectsFromServer = function(type) {
 		return $http({
 			method: "GET",
-			url: CONSTANTS.getDomain(["projects","user",user._id])
+			url: CONSTANTS.getDomain(["projects",type,"token",token])
 		}).then(function mySucces(response) {
 			return response.data;
 		}, function myError(response) {
 			return null;
 		});
-	}
+	};
 
 	return {
-		getProjects: function() {
-			if(projects) {
-				var deferred = $q.defer();
-				deferred.resolve(projects);
-				return deferred.promise;
-			}
-			return getProjectsFromServer().then(function(projectsData) {
-				projects = projectsData;
-				return projects;
-			});
-
+		getProjects: function(type) {
+			return getProjectsFromServer(type);
 		}
 	};
 

@@ -1,4 +1,4 @@
-    var app = angular.module('NAYA', ['ui.bootstrap', 'ngRoute', 'appRoutes', 'HomeCtrl', 'ChatCtrl','ProjectCtrl','TaskCtrl','UserService','ProjectService','TaskService']);
+    var app = angular.module('NAYA', ['ui.bootstrap', 'ngRoute', 'appRoutes', 'HomeCtrl', 'ChatCtrl','ProjectCtrl','TaskCtrl','AddModalCtrl','UserService','ProjectService','TaskService']);
 
     app.constant("CONSTANTS", {
         "host": "http://localhost",

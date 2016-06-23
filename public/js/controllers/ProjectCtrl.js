@@ -1,6 +1,10 @@
 angular.module('ProjectCtrl', []).controller('ProjectController', function($scope,ProjectFactory) {
-	var q = ProjectFactory.getProjects();
-	q.then(function(projects){
-		$scope.projects = projects;
-	})
+
+	$scope.loadProjects = function(type){
+		var q = ProjectFactory.getProjects(type);
+		q.then(function(projects){
+			$scope.projects = projects;
+		})
+	}
+	
 });

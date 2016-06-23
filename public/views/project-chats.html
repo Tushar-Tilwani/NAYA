@@ -1,0 +1,6 @@
+<div class="container-fluid">
+  <h2>List Group With Linked Items</h2>
+  <div class="list-group" ng-init="loadProjects('user')">
+    <a href="/chat/{{project._id}}" class="list-group-item" ng-repeat="project in projects"> {{project.name}} <span class="badge"> &gt; </span> </a>
+  </div>
+</div>
