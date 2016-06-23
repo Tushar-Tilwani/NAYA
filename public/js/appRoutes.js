@@ -31,6 +31,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',fu
 		.when('/tasks/:projectId', {
 			templateUrl: 'public/views/tasks.html',
 			controller: 'TaskController'
+		})
+
+		.when('/mytasks/', {
+			templateUrl: 'public/views/tasks.html',
+			controller: 'MyTaskController'
 		});
 
 	$locationProvider.html5Mode(true);

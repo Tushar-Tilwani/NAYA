@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row">
+    <div class="row addTask">
         <a href="#" ng-click="open('lg')">
           <span class="glyphicon glyphicon-plus-sign size-big"></span>
       </a>
@@ -19,7 +19,7 @@
             <div class="card-content">
                 <p>{{task.description}}</p>
                 <p><span class="inline-content"><label>Manager:</label>{{task.manager.last_name}}, {{task.manager.first_name}}</span></p>
-                <p><span class="inline-content"><label>Start Date: </label>{{task.start_date}}</span><span class="inline-content"><label>End Date: </label>{{task.end_date}}</span></p>
+                <p><span class="inline-content"><label>Start Date: </label>{{epochToDate(task.start_date)}}</span><span class="inline-content"><label>End Date: </label>{{epochToDate(task.end_date)}}</span></p>
             </div>
 
             <div class="card-action">

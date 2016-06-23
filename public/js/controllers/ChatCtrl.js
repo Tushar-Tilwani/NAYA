@@ -2,7 +2,7 @@ angular.module('ChatCtrl', []).controller('ChatController', function($scope,$roo
 
     var projectId = $routeParams.projectId;
 
-	var socket = io();
+    var socket = io();
     // on connection to server, ask for user's name with an anonymous callback
     socket.on('connect', function(){
         // call the server-side function 'adduser' and send one parameter (value of prompt)
@@ -10,16 +10,18 @@ angular.module('ChatCtrl', []).controller('ChatController', function($scope,$roo
     });
 
     // listener, whenever the server emits 'updatechat', this updates the chat body
-    socket.on('updatechat', function (username, data) {
-        $('#ul-chat-messages').append('<li class="list-group-item"><b>'+username + ':</b> ' + data + '</li>');
-        var objDiv = document.getElementById("ul-chat-messages");
-        objDiv.scrollTop = objDiv.scrollHeight;
-    });
+    socket.on('updatechat', function (obj, data) {
+        if(projectId.localeCompare(obj.room) == 0){
+           $('#ul-chat-messages').append('<li class="list-group-item"><b>'+obj.username + ':</b> ' + data + '</li>');
+           var objDiv = document.getElementById("ul-chat-messages");
+           objDiv.scrollTop = objDiv.scrollHeight;
+       }
+   });
 
     // when the client clicks SEND
-        $('#btn-chat').click( function() {
-            var message = $('#btn-input').val();
-            $('#btn-input').val('');
+    $('#btn-chat').click( function() {
+        var message = $('#btn-input').val();
+        $('#btn-input').val('');
             // tell server to execute 'sendchat' and send along one parameter
             socket.emit('sendchat', message);
         });

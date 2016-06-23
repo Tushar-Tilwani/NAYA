@@ -8,9 +8,8 @@ io.sockets.on('connection', function (socket) {
   
   // when the client emits 'adduser', this listens and executes
   socket.on('adduser', function(obj){
-    console.log("username");
-    console.log(obj.username);
     // store the username in the socket session for this client
+    socket.obj = obj;
     socket.username = obj.username;
     // store the room name in the socket session for this client
     socket.room = obj.room;
@@ -19,15 +18,15 @@ io.sockets.on('connection', function (socket) {
     // send client to room 1
     socket.join(obj.room);
     // echo to client they've connected
-    socket.emit('updatechat', 'SERVER', 'you have connected to room1');
+    socket.emit('updatechat', {username:'SERVER',room:socket.room}, 'you have connected to room1');
     // echo to room 1 that a person has connected to their room
-    socket.broadcast.to('room1').emit('updatechat', 'SERVER', obj.username + ' has connected to this room');
+    socket.broadcast.to('room1').emit('updatechat', {username:'SERVER',room:socket.room}, obj.username + ' has connected to this room');
   });
   
   // when the client emits 'sendchat', this listens and executes
   socket.on('sendchat', function (data) {
     // we tell the client to execute 'updatechat' with 2 parameters
-    io.sockets.in(socket.room).emit('updatechat', socket.username, data);
+    io.sockets.in(socket.room).emit('updatechat', socket.obj, data);
   });
   
 
@@ -38,7 +37,7 @@ io.sockets.on('connection', function (socket) {
     // update list of users in chat, client-side
     io.sockets.emit('updateusers', usernames);
     // echo globally that this client has left
-    socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
+    socket.broadcast.emit('updatechat', {username:'SERVER',room:socket.room}, socket.username + ' has disconnected');
     socket.leave(socket.room);
   });
 });

@@ -43,4 +43,9 @@ angular.module('TaskCtrl', []).controller('TaskController', function($scope, $ro
     $scope.isDone = !$scope.isDone;
   }
 
+})
+.controller('MyTaskController', function($scope,$rootScope,TaskFactory) {
+  TaskFactory.getTasksByEmployeeId($rootScope.user._id).then(function(tasks){
+      $scope.tasks = tasks || [];
+    });
 });
