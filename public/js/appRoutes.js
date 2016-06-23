@@ -23,7 +23,7 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider',fu
 			controller: 'ProjectController'
 		})
 
-		.when('/chat', {
+		.when('/chat/:projectId', {
 			templateUrl: 'public/views/chat.html',
 			controller: 'ChatController'
 		})
