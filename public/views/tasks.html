@@ -13,7 +13,7 @@
 <div class="row">
     <!-- Card Projects -->
     <div class="col-md-6 col-md-offset-3" ng-repeat="task in tasks">
-        <div class="card" ng-class="{{ task.isDone ? 'disable' : 'enable' }}">
+        <div class="card" ng-class="{disable: task.isDone}">
             <div class="card-image">
                 <h4 class="card-title">{{task.name}}</h4>
             </div>
@@ -25,7 +25,7 @@
 
             <div class="card-action">
                <button type="button" class="btn btn-primary" ng-click="toggleDone(task._id,!task.isDone)">
-                {{!!task.isDone ? "Close Task" : "Reopen Task" }}
+                {{!!task.isDone ? "Reopen Task" : "Close Task" }}
             </button>
         </div>
     </div>

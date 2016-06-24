@@ -136,7 +136,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
                         <ul class="dropdown-menu alert-dropdown">
                             <li>
-                                <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                                <a href="#" >Alert Name <span class="label label-default">Alert Badge</span></a>
                             </li>
                             <li>
                                 <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
@@ -173,7 +173,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                                <a href="/"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                             </li>
                         </ul>
                     </li>
@@ -181,16 +181,16 @@
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li ng-class="{ active: isActive('/home')}">
+                        <li ng-class="{ active: isActive('/home')}" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                             <a href="/home"><i class="fa fa-fw fa-dashboard"></i>Dashboard</a>
                         </li>
-                        <li ng-class="{ active: isActive('/projects')}">
+                        <li ng-class="{ active: isActive('/projects')}" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                             <a href="/projects"><i class="fa fa-fw fa-bar-chart-o"></i>Projects</a>
                         </li>
-                        <li ng-class="{ active: isActive('/mytasks')}">
+                        <li ng-class="{ active: isActive('/mytasks')}" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                             <a href="/mytasks/"><i class="fa fa-fw fa-table"></i>Tasks</a>
                         </li>
-                        <li ng-class="{ active: (isActive('/chats') || isActive('/chat')) }">
+                        <li ng-class="{ active: (isActive('/chats') || isActive('/chat')) }" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                             <a href="/chats"><i class="fa fa-fw fa-wechat"></i>Chats</a>
                         </li>
                         <!-- <li ng-class="{ active: isActive('/aboutus')}">

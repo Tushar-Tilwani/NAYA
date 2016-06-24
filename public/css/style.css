@@ -36,6 +36,11 @@
   border-radius: 2px;
   background-clip: padding-box;
 }
+
+.card.disable {
+  opacity: 0.6;
+}
+
 .card .card-title {
     font-size: 24px;
     font-weight: 300;
