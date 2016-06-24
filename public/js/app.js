@@ -51,6 +51,8 @@
       window.location.href = "/login";
     };
 
+    $rootScope.logOut = invalidatePage;
+
     var saveUser = function() {
       $http({
         method: "GET",

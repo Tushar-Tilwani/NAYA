@@ -10,7 +10,7 @@ angular.module('LoginCtrl', []).controller('LoginController', function($scope, $
 			var data = response.data;
 			if(data && data.token){
 				window.sessionStorage.token = data.token;
-				window.location.href = "/index";
+				window.location.href = "/home";
 			} else {
 				$scope.message = "Please enter a valid userid or password";
 			}
