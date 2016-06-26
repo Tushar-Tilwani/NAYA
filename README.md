@@ -3,6 +3,13 @@
 
 "node server.js"
 
-#manager
+#manager login
 username : arice0
+
 password : password
+
+#employee Login
+username: jcolemane
+
+
+password: password
